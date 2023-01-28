@@ -26,14 +26,17 @@ jobs:
       - name: Run
         run: |
           chmod 777 chromedriver
-          python refresh.py
-
+          python refresh.py 
       - name: Commit
         run: |
           git config --local user.email 'iptvrokuezlmao@gmail.com'
           git config --local user.name 'CreiziMAn'
-          git remote set-url origin 'https://CreiziMAn:${{ secrets.TOKEN }}@github.com/CreiziMAn/Free-Proxies.git'
           git add 'proxies/'
           git add 'README.md'
           git commit -am "Updated Proxies"
-          git push
+      - name: Push changes
+        uses: ad-m/github-push-action@master
+        with:
+          github_token: ${{ secrets.TOKEN }}
+        env:
+         CI: true
