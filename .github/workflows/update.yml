@@ -27,10 +27,11 @@ jobs:
         run: |
           chmod 777 chromedriver
           python refresh.py
+
       - name: Commit
         run: |
-          git config --local user.email '98925189+CreiziMAn@users.noreply.github.com'
-          git config --local user.name 'CreiziMAn'
+          git config --local user.email 'github-actions[bot]@users.noreply.github.com'
+          git config --local user.name 'github-actions[bot]'
           git remote set-url origin 'https://x-access-token:${{ secrets.GITHUB_TOKEN }}@github.com/CreiziMAn/Free-Proxies.git'
           git add 'proxies/'
           git add 'README.md'
